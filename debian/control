@@ -1,0 +1,12 @@
+Source: ros-eloquent-rmf-rviz-plugin
+Section: misc
+Priority: optional
+Maintainer: yadu <yadunund@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), qtbase5-dev, ros-eloquent-ament-cmake, ros-eloquent-pluginlib, ros-eloquent-rclcpp, ros-eloquent-resource-retriever, ros-eloquent-rmf-dispenser-msgs, ros-eloquent-rmf-door-msgs, ros-eloquent-rmf-fleet-msgs, ros-eloquent-rmf-lift-msgs, ros-eloquent-rmf-task-msgs, ros-eloquent-rmf-traffic, ros-eloquent-rviz-common, ros-eloquent-rviz-default-plugins, ros-eloquent-rviz-rendering, ros-eloquent-std-msgs, ros-eloquent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-rmf-rviz-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5core5a, libqt5gui5, libqt5widgets5, ros-eloquent-pluginlib, ros-eloquent-rclcpp, ros-eloquent-resource-retriever, ros-eloquent-rmf-dispenser-msgs, ros-eloquent-rmf-door-msgs, ros-eloquent-rmf-fleet-msgs, ros-eloquent-rmf-lift-msgs, ros-eloquent-rmf-task-msgs, ros-eloquent-rmf-traffic, ros-eloquent-rviz-common, ros-eloquent-rviz-default-plugins, ros-eloquent-rviz-rendering, ros-eloquent-std-msgs, ros-eloquent-ros-workspace
+Description: Rviz2 panel for controlling rmf_demos
