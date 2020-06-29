@@ -1,0 +1,12 @@
+Source: ros-eloquent-rmf-demo-maps
+Section: misc
+Priority: optional
+Maintainer: Aaron Chong <aaron@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-ament-cmake, ros-eloquent-building-map-tools, ros-eloquent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-rmf-demo-maps
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-eloquent-ros-workspace
+Description: A package containing demo maps for rmf
