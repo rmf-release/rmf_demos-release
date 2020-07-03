@@ -1,9 +1,0 @@
-ros-eloquent-rmf-demo-maps (1.0.0-1bionic) bionic; urgency=high
-
-  * Provides an annotated traffic_editor map for the Office world simulation which contains two Magni robots operating on a single traffic graph, a beverage dispensing station and two motorized doors
-  * Provides an annotated traffic_editor map for the Airport Terminal world simulation which contains four Magni and two MiR100 robots operating on separate traffic graphs. The map also includes several motorized doors as well as a cleaning supplies dispensing station
-  * Contributors: Aaron, Aaron Chong, Boon Han, Charayaphan Nakorn Boon Han, Morgan Quigley, Yadu, Yadunund, ngwk1
-
- -- Aaron Chong <aaron@openrobotics.org>  Tue, 23 Jun 2020 16:00:00 -0000
-
-
