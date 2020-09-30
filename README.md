@@ -15,76 +15,32 @@ This repository contains demonstrations of the above mentioned capabilities of R
 
 These demos were developed and tested on
 
-* [Ubuntu 18.04 LTS](https://releases.ubuntu.com/18.04/)
+* [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04/)
 
-* [ROS 2 - Eloquent](https://index.ros.org/doc/ros2/Releases/Release-Eloquent-Elusor/)
+* [ROS 2 - Foxy](https://index.ros.org/doc/ros2/Releases/Release-Foxy-Fitzroy/)
 
-* [Gazebo 9.12.0 or 9.13.0](https://osrf-distributions.s3.us-east-1.amazonaws.com/gazebo/releases/gazebo-9.12.0.tar.bz2)
+* [Gazebo 11.1.0](http://gazebosim.org/)
 
-## Setup
+## Installation
+Instructions can be found [here](docs/installation.md).
 
-Setup your computer to accept Gazebo packages from packages.osrfoundation.org.
-
-```bash
-sudo apt update
-sudo apt install -y wget
-echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable bionic main" > /etc/apt/sources.list.d/gazebo-stable.list
-wget https://packages.osrfoundation.org/gazebo.key -O - | apt-key add -
-```
-Install all non-ROS dependencies of RMF packages,
-
-```bash
-sudo apt update && sudo apt install \
-  git cmake python3-vcstool curl \
-  qt5-default \
-  libboost-system-dev libboost-date-time-dev libboost-regex-dev libboost-random-dev \
-  python3-shapely python3-yaml python3-requests \
-  libignition-common3-dev libignition-plugin-dev \
-  g++-8 \
-  -y
-```
-
-Setup a new ROS 2 workspace and pull in the demo repositories using `vcs`,
-
-```bash
-mkdir -p ~/rmf_demos_ws/src
-cd ~/rmf_demos_ws
-wget https://raw.githubusercontent.com/osrf/rmf_demos/master/rmf_demos.repos
-vcs import src < rmf_demos.repos
-```
-
-Ensure all ROS 2 prerequisites are fulfilled,
-
-```bash
-cd ~/rmf_demos_ws
-rosdep install --from-paths src --ignore-src --rosdistro eloquent -yr
-```
-
-The `Airport Terminal` world requires certain open source gazebo models hosted [here](https://github.com/osrf/gazebo_models). If any model related errors are observed at launch, the missing models can be manually downloaded and added into `~/.gazebo/models/`. Optionally, all the open source models can be downloaded and copied into the default model directory.
-
-```bash
-cd ~/.
-git clone https://github.com/osrf/gazebo_models
-cd gazebo_models
-cp -r ./* ~/.gazebo/models/.
-```
-
-## Compiling Instructions
-
-Source ROS 2 Eloquent and build,
-
-```bash
-cd ~/rmf_demos_ws
-source /opt/ros/eloquent/setup.bash
-CXX=g++-8 colcon build --cmake-args -DCMAKE_BUILD_TYPE=RELEASE
-```
-> Note: The build will fail if the compiler is not set to g++ version 8 or above.
 ## FAQ
 Answers to frequently asked questions can be found [here](docs/faq.md).
 
-# Office World
-An indoor office environment for robots to navigate around. It includes a beverage dispensing station, controllable doors and laneways which are integrated into RMF.
+## Demo Worlds
 
+* [Office World](#Office-World)
+* [Airport Terminal World](#Airport-Terminal-World)
+* [Clinic World](#Clinic-World)
+* [Hotel World](#Hotel-World)
+
+> Note: When running the demos on Ubuntu 18.04 (not officially supported), you are required to explicitly supply gazebo_version launch argument. Eg:
+ros2 launch demos office.launch.xml gazebo_version:=9
+
+---
+
+### Office World
+An indoor office environment for robots to navigate around. It includes a beverage dispensing station, controllable doors and laneways which are integrated into RMF.
 
 ```bash
 source ~/rmf_demos_ws/install/setup.bash
@@ -102,9 +58,9 @@ source ~/rmf_demos_ws/install/setup.bash
 ros2 launch demos office_delivery.launch.xml 
 ``` 
 
-![](docs/docs/media/delivery_request.gif)
+![](docs/media/delivery_request.gif)
 
-To request each of the Magni robots to loop between two points,
+To request each of the TinyRobot to loop between two points,
 Select desired `Start` and `End` waypoints using the `RMF Panel` and click the `Send Loop Request` button. Alternatively,
 
 ```bash
@@ -114,14 +70,16 @@ ros2 launch demos office_loop.launch.xml
 
 ![](docs/media/loop_request.gif)
 
-# Airport Terminal World
+---
+
+### Airport Terminal World
 
 This demo world shows robot interaction on a much larger map, with a lot more lanes, destinations, robots and possible interactions between robots from different fleets, robots and infrastructure, as well as robots and users. In the illustrations below, from top to bottom we have how the world looks like in `traffic_editor`, the schedule visualizer in `rviz`, and the full simulation in `gazebo`,
 
 ![](docs/media/airport_terminal_traffic_editor_screenshot.png)
 ![](docs/media/airport_terminal_demo_screenshot.png)
 
-## Demo Scenario
+#### Demo Scenario
 To launch the world and the schedule visualizer,
 
 ```bash
@@ -135,7 +93,7 @@ To spawn robots into the world and issue tasks to the same,
 source ~/rmf_demos_ws/install/setup.bash
 ros2 run demos airport_terminal_scenario.sh
 ```
-This command spawns two MiR100 and four Magni robots in the map. Out of these one MiR100 and two magni robots are issued loop request tasks. The other robots are idle and can be issued loop or delivery request tasks via the `RMF Panel`.
+This command spawns two DeliveryRobots and four TinyRobots in the map. Out of these one DeliveryRobot and two TinyRobots are issued loop request tasks. The other robots are idle and can be issued loop or delivery request tasks via the `RMF Panel`.
 
 Alternatively, to spawn all the robots without issuing any task orders,
 
@@ -150,7 +108,7 @@ source ~/rmf_demos_ws/install/setup.bash
 ros2 launch demos airport_terminal_delivery.launch.xml
 ```
 
-Non-autonomous vehicles can also be integrated with RMF provided their positions can be localized in the world. This may be of value at facilities where space is shared by autonomous robots as well as manually operated vechiles such as forklifts or transporters. In this demo, we can introduce a vehicle (caddy) which can be driven around through keyboard/joystick teleop. In RMF nomenclature, this vehicle is classified as a `read_only` type, ie, RMF can only infer its position in the world but does not have control over its motion. Here, the goal is to have other controllable robots avoid this vechile's path by replanning their routes if needed. The model is fitted with a plugin which generates a prediction of the vehicle's path based on its current heading. It is configured to occupy the same lanes as the `magni` robots. Here, a `read_only_fleet_adapter` submits the prediction from the plugin to the RMF schedule.
+Non-autonomous vehicles can also be integrated with RMF provided their positions can be localized in the world. This may be of value at facilities where space is shared by autonomous robots as well as manually operated vechiles such as forklifts or transporters. In this demo, we can introduce a vehicle (caddy) which can be driven around through keyboard/joystick teleop. In RMF nomenclature, this vehicle is classified as a `read_only` type, ie, RMF can only infer its position in the world but does not have control over its motion. Here, the goal is to have other controllable robots avoid this vechile's path by replanning their routes if needed. The model is fitted with a plugin which generates a prediction of the vehicle's path based on its current heading. It is configured to occupy the same lanes as the `tinyRobot` robots. Here, a `read_only_fleet_adapter` submits the prediction from the plugin to the RMF schedule.
 
 To spawn the caddy into the world,
 
@@ -161,4 +119,71 @@ ros2 launch demos airport_terminal_caddy.launch.xml
 
 ![](docs/media/caddy.gif)
 
+---
 
+### Clinic World
+
+This is an imaginary clinic building with three levels and two lifts. Three different robot fleets with different roles navigate across all three levels by lifts. In the illustrations below, we have the view of all three levels in `traffic_editor` (top left), the schedule visualizer in `rviz` (right), and the full simulation in `gazebo` (bottom left).
+
+![](docs/media/clinic.png)
+
+#### Demo Scenario
+To launch the world and the schedule visualizer,
+
+```bash
+source ~/rmf_demos_ws/install/setup.bash
+ros2 launch demos clinic.launch.xml
+```
+
+To simulate a delivery
+
+Select fleet `tinyRobot`, set `L1_pantry` and `L3_ward4` as `Start` and `End` waypoints. Ensure `Pickup` and `Dropoff` dispensers are set to `coke_dispenser` and `coke_ingestor` respectively. Finally, click the `Send Delivery Request` button in the RViz `RMF Panel`.
+
+Alternatively, a launch file is configured to achieve the same result.
+
+```bash
+source ~/rmf_demos_ws/install/setup.bash
+ros2 launch demos clinic_delivery.launch.xml 
+``` 
+
+To request each of the robots to loop between two points, select desired robot fleet, `Start` and `End` waypoints using the `RMF Panel` and click the `Send Loop Request` button. Alternatively,
+
+```bash
+source ~/rmf_demos_ws/install/setup.bash
+ros2 launch demos clinic_loop.launch.xml
+``` 
+
+Robots taking lift:
+![](docs/media/robots_taking_lift.gif)
+
+Multi-fleet demo:
+![](docs/media/clinic.gif)
+
+---
+
+### Hotel World
+
+This is a hotel with a lobby and a guest level. The hotel has two lifts and two robot fleets. The tiny robots are supposed to guide the guests and the delivery robots are used to load and deliver cargo.
+
+The hotel map is truncated due to the high memory usage. The full map can be accessed [here](https://github.com/MakinoharaShouko/hotel).
+
+Hotel floor plan in `traffic_editor`:
+![](docs/media/hotel.png)
+
+Full hotel floor plan in `traffic_editor`:
+![](docs/media/hotel_full.png)
+
+#### Demo Scenario
+
+To launch the world and the schedule visualizer,
+
+```bash
+source ~/rmf_demos_ws/install/setup.bash
+ros2 launch demos hotel.launch.xml
+```
+
+To simulate a loop request, select desired robot fleet, `Start` and `End` waypoints using the `RMF Panel` and click the `Send Loop Request` button.
+
+Robot taking lift:
+
+![](docs/media/robot_taking_lift_hotel.gif)
