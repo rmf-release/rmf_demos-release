@@ -1,0 +1,12 @@
+Source: ros-rolling-rmf-plugins-common
+Section: misc
+Priority: optional
+Maintainer: Luca Della Vedova <luca@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, ros-rolling-ament-cmake, ros-rolling-building-map-msgs, ros-rolling-rclcpp, ros-rolling-rmf-dispenser-msgs, ros-rolling-rmf-fleet-msgs, ros-rolling-rmf-ingestor-msgs, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-rmf-plugins-common
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, ros-rolling-building-map-msgs, ros-rolling-rclcpp, ros-rolling-rmf-dispenser-msgs, ros-rolling-rmf-fleet-msgs, ros-rolling-rmf-ingestor-msgs, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Description: Common utility functions for Gazebo and ignition RMF plugins
