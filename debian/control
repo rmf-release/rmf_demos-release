@@ -1,0 +1,12 @@
+Source: ros-rolling-rmf-rviz-plugin
+Section: misc
+Priority: optional
+Maintainer: yadu <yadunund@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), qtbase5-dev, ros-foxy-rmf-dispenser-msgs, ros-foxy-rmf-door-msgs, ros-foxy-rmf-fleet-msgs, ros-foxy-rmf-lift-msgs, ros-foxy-rmf-task-msgs, ros-foxy-rmf-traffic, ros-rolling-ament-cmake, ros-rolling-pluginlib, ros-rolling-rclcpp, ros-rolling-resource-retriever, ros-rolling-rviz-common, ros-rolling-rviz-default-plugins, ros-rolling-rviz-rendering, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-rmf-rviz-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5core5a, libqt5gui5, libqt5widgets5, ros-foxy-rmf-dispenser-msgs, ros-foxy-rmf-door-msgs, ros-foxy-rmf-fleet-msgs, ros-foxy-rmf-lift-msgs, ros-foxy-rmf-task-msgs, ros-foxy-rmf-traffic, ros-rolling-pluginlib, ros-rolling-rclcpp, ros-rolling-resource-retriever, ros-rolling-rviz-common, ros-rolling-rviz-default-plugins, ros-rolling-rviz-rendering, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Description: Rviz2 panel for controlling rmf_demos
