@@ -1,0 +1,12 @@
+Source: ros-rolling-rmf-demo-assets
+Section: misc
+Priority: optional
+Maintainer: yadu <yadunund@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-rmf-demo-assets
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-building-gazebo-plugins, ros-rolling-rmf-gazebo-plugins, ros-rolling-ros-workspace
+Description: Models and other media used for RMF demos
