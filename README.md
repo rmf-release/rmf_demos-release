@@ -1,3 +1,35 @@
+## rmf_demos (rolling) - 1.9999.0-5
+
+The packages in the `rmf_demos` repository were released into the `rolling` distro by running `/usr/local/bin/bloom-release --rosdistro rolling --track rolling rmf_demos` on `Mon, 21 Dec 2020 07:33:51 -0000`
+
+These packages were released:
+- `demos`
+- `rmf_demo_assets`
+- `rmf_demo_maps`
+- `rmf_demo_tasks`
+- `rmf_demos_dashboard_resources`
+- `rmf_gazebo_plugins`
+- `rmf_ignition_plugins`
+- `rmf_plugins_common`
+- `rmf_rviz_plugin`
+
+Version of package(s) in repository `rmf_demos`:
+
+- upstream repository: https://github.com/osrf/rmf_demos.git
+- release repository: https://github.com/rmf-release/rmf_demos-release.git
+- rosdistro version: `1.9999.0-4`
+- old version: `1.9999.0-4`
+- new version: `1.9999.0-5`
+
+Versions of tools used:
+
+- bloom version: `0.10.0`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## rmf_demos (rolling) - 1.9999.0-4
 
 The packages in the `rmf_demos` repository were released into the `rolling` distro by running `/usr/local/bin/bloom-release --rosdistro rolling --track rolling rmf_demos` on `Fri, 18 Dec 2020 10:13:14 -0000`
