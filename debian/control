@@ -1,0 +1,12 @@
+Source: ros-rolling-demos
+Section: misc
+Priority: optional
+Maintainer: yadu <yadunund@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-demos
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-foxy-building-map-tools, ros-foxy-visualizer, ros-rolling-building-gazebo-plugins, ros-rolling-gazebo-ros-pkgs, ros-rolling-joy, ros-rolling-launch-xml, ros-rolling-rmf-demo-assets, ros-rolling-rmf-demo-maps, ros-rolling-rmf-demo-tasks, ros-rolling-rmf-fleet-adapter, ros-rolling-rmf-gazebo-plugins, ros-rolling-rmf-rviz-plugin, ros-rolling-rmf-traffic-ros2, ros-rolling-rviz2, ros-rolling-teleop-twist-joy, ros-rolling-ros-workspace
+Description: Launch files for RMF demos
