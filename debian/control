@@ -1,0 +1,12 @@
+Source: ros-rolling-rmf-demo-maps
+Section: misc
+Priority: optional
+Maintainer: Aaron Chong <aaron@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-building-map-tools, ros-rolling-ros2run, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-rmf-demo-maps
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-ros-workspace
+Description: A package containing demo maps for rmf
