@@ -1,3 +1,35 @@
+## rmf_demos (foxy) - 1.2.0-2
+
+The packages in the `rmf_demos` repository were released into the `foxy` distro by running `/usr/local/bin/bloom-release --rosdistro foxy --track 21.01 rmf_demos` on `Thu, 14 Jan 2021 08:31:51 -0000`
+
+These packages were released:
+- `demos`
+- `rmf_demo_assets`
+- `rmf_demo_maps`
+- `rmf_demo_tasks`
+- `rmf_demos_dashboard_resources`
+- `rmf_gazebo_plugins`
+- `rmf_ignition_plugins`
+- `rmf_plugins_common`
+- `rmf_rviz_plugin`
+
+Version of package(s) in repository `rmf_demos`:
+
+- upstream repository: https://github.com/osrf/rmf_demos.git
+- release repository: https://github.com/rmf-release/rmf_demos-release.git
+- rosdistro version: `1.1.0-1`
+- old version: `1.2.0-1`
+- new version: `1.2.0-2`
+
+Versions of tools used:
+
+- bloom version: `0.10.0`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## rmf_demos (foxy) - 1.2.0-1
 
 The packages in the `rmf_demos` repository were released into the `foxy` distro by running `/usr/local/bin/bloom-release --rosdistro foxy --track 21.01 rmf_demos --override-release-repository-url https://github.com/rmf-release/rmf_demos-release` on `Thu, 14 Jan 2021 03:40:11 -0000`
