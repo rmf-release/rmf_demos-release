@@ -38,6 +38,8 @@ override_dh_auto_build:
 	# in the install tree and source it.  It will set things like
 	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+	npm install --prefix rmf_demo_panel/static/
+	npm run build --prefix rmf_demo_panel/static/
 	dh_auto_build
 
 override_dh_auto_test:
