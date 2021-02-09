@@ -1,0 +1,26 @@
+From 6a1d333e49c8898b61e10489d53b9ed35eb752b9 Mon Sep 17 00:00:00 2001
+From: "Marco A. Gutierrez" <marco@openrobotics.org>
+Date: Tue, 9 Feb 2021 15:42:04 +0800
+Subject: [PATCH] adding npm compiling rules
+
+Signed-off-by: Marco A. Gutierrez <marco@openrobotics.org>
+---
+ debian/rules.em | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/debian/rules.em b/debian/rules.em
+index 690cd19..0518db1 100755
+--- a/debian/rules.em
++++ b/debian/rules.em
+@@ -38,6 +38,8 @@ override_dh_auto_build:
+ 	# in the install tree and source it.  It will set things like
+ 	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+ 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
++	npm install --prefix rmf_demo_panel/static/
++	npm run build --prefix rmf_demo_panel/static/
+ 	dh_auto_build
+ 
+ override_dh_auto_test:
+-- 
+2.25.1
+
