@@ -92,7 +92,7 @@ tracks:
     last_version: 1.9999.0
     name: upstream
     patches: null
-    release_inc: '8'
+    release_inc: '9'
     release_repo_url: https://github.com/rmf-release/rmf_demos-release.git
     release_tag: :{version}
     ros_distro: rolling
